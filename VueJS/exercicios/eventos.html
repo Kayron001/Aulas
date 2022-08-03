@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+
+<body class="exercicio">
+    <div id="app">
+        <p>{{ contador }}</p>
+        <p>
+            <!-- podemos criar uma função usando methods e aplicar usando v-on:click -->
+            <button v-on:click="add">' +1 '</button>
+            <!-- como também podemos aplicar diretamente uma função utilizando @click -->
+            <button @click="contador -= 1">' -1 '</button>
+        </p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: x: {{x}} e y: {{y}}
+            <span @mousemove.stop>Aqui Não</span>
+        </p>
+        <input type="text" @keyup.enter="alerta">
+
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                atualizarPosicao(e) {
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta(){
+                    alert('Enter!')
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

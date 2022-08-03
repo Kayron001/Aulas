@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <P>{{ link }}</P>
+        <P><a href="{{ link }}">Google?</a></P>
+        <p><a v-bind:href="link">Google!</a></p>
+        <p><a :href="link">Google!</a></p>
+        <p>
+            <!-- dessa forma, ele cria um bind de duras direções -->
+            <!-- <input type="text" v-model="nome"><br> -->
+            
+            <!-- dessa forma ele cria um bind, mas apenas pega a informação de data -->
+            <!-- <input type="text" :value="nome"><br> -->
+
+            <!-- dessa forma ele cria um bind, mas apenas pega a informação de data -->
+            <!-- <input type="text" v-bind:value="nome"><br> -->
+
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data:{
+                nome: 'Maria',
+                link: 'https://www.google.com.br'
+            },
+            watch:{
+                nome(novoValor){
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
